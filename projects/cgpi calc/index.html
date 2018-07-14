@@ -64,7 +64,11 @@
         document.getElementById('output').style.visibility = 'visible';
         
         let pointerr = e.target.value;
-        if(pointerr < 7){
+        if(pointerr == ""){
+            document.getElementById('output').style.visibility = 'hidden';
+
+        }
+        else if(pointerr < 7){
             pointerr= 7.1*pointerr+12+ "%" + "<br><br> <p> Your CGPI is less than 7 <br> Formula Applied (7.1*CGPI+12)</p>";
         }
         else{
