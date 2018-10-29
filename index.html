@@ -1,39 +1,116 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Girish Sukinkar Portfolio</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/app.css" />
-    <script src="js/main.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Catamaran" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/app.css">
+    <meta charset="UTF-8">
+    <title>moneyfront</title>
+    <!--<script src="https://wchat.freshchat.com/js/widget.js"></script>-->
+    <style>
+        #custom_fc_button {
+            width: 10%;
+            position: fixed;
+            right: 1px;
+            bottom: 20px;
+
+        }
+        #imageicon {
+            height: 30%;
+            width: 30%
+        }
+        img{
+            border:10px solid #134321;
+            border-radius: 50%;
+
+        }
+       .bar{
+           bottom:1px;
+           position:fixed;
+           background: #134321;
+
+           width: auto;
+           -webkit-border-radius: 2px;
+           -moz-border-radius: 2px;
+           border-radius: 2px;
+       }
+       p{
+           background: green;
+           display: table;
+           padding: 3px;
+           margin-right: 40px;
+           border-radius: 2px;
+
+       }
+        .image img{
+            height: 40px;
+            margin-top:-30px;
+            margin-left: 10px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            #custom_fc_button {
+                width: 30%;
+
+
+            }
+        }
+    </style>
+
 </head>
 <body>
-    
-        
-        <div class="container">
-            <div class="row ">
-                <div class=" colme col-sm-4 col-xs-12">
-                    <a href="projects/cgpi calc/index.html" target="_blank">CGPI to % Calculator</a>
-                </div>
-                <div class=" colme col-sm-4 col-xs-12">
-                        <a href="projects/alfa/index.php" target="_blank">Alfa KPO Makeover</a>
-                 </div>
-                    <div class=" colme col-sm-4 col-xs-12">
-                            <a href="projects/siddhesh/index.html" target="_blank">Shraddha Cottage</a>
-                   </div>
-                   
-            </div>
-        </div>
-      
-        
-          
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+<!--<div class="bar">
+    <div class="image" style="float:left;height:30px;">
+        <a href="" id="open_fc_widget"  onClick="openWidget()"><img src="../img/logo.jpg" alt=""></a>
+    </div>
+    <div class="text" style="float: right;">
+        <p>Chat With Us</p>
+    </div>
+</div>-->
+
+
+
+<div id="custom_fc_button" style="visibility:hidden;">
+
+  <a id="open_fc_widget" onClick="openWidget()" style="cursor:pointer;"><img id="imageicon" src="../img/logo.jpg" />
+
+  </a>
+</div>
+<script>
+    window.fcSettings = {
+        token: "66d00865-c20f-41d6-b126-9b9b7cbac056",
+        host: "https://wchat.freshchat.com",
+        config: {
+            headerProperty: {
+                hideChatButton: true
+            }
+        },
+        onInit: function() {
+            window.fcWidget.on("widget:loaded",function() {
+                document.getElementById('custom_fc_button').style.visibility = 'visible';
+                window.fcWidget.on("unreadCount:notify", function(resp) {
+                    console.log(resp);
+                    test = resp;
+                });
+                window.fcWidget.on("widget:closed", function() {
+                    document.getElementById('fc_frame').style.visibility = 'hidden';
+                    document.getElementById('open_fc_widget').style.visibility = 'visible';
+                });
+                window.fcWidget.on("widget:opened", function(resp) {
+                    document.getElementById('open_fc_widget').style.visibility = 'hidden';
+                });
+            });
+        }
+    };
+
+
+    var openWidget = function() {
+        document.getElementById('fc_frame').style.visibility = 'visible';
+        window.fcWidget.open();
+    };
+
+</script>
+<script src="https://wchat.freshchat.com/js/widget.js" async></script>
+
+
 </body>
 </html>
