@@ -1,116 +1,54 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>moneyfront</title>
-    <!--<script src="https://wchat.freshchat.com/js/widget.js"></script>-->
-    <style>
-        #custom_fc_button {
-            width: 10%;
-            position: fixed;
-            right: 1px;
-            bottom: 20px;
-
-        }
-        #imageicon {
-            height: 30%;
-            width: 30%
-        }
-        img{
-            border:10px solid #134321;
-            border-radius: 50%;
-
-        }
-       .bar{
-           bottom:1px;
-           position:fixed;
-           background: #134321;
-
-           width: auto;
-           -webkit-border-radius: 2px;
-           -moz-border-radius: 2px;
-           border-radius: 2px;
-       }
-       p{
-           background: green;
-           display: table;
-           padding: 3px;
-           margin-right: 40px;
-           border-radius: 2px;
-
-       }
-        .image img{
-            height: 40px;
-            margin-top:-30px;
-            margin-left: 10px;
-        }
-
-        @media only screen and (max-width: 600px) {
-            #custom_fc_button {
-                width: 30%;
-
-
-            }
-        }
-    </style>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Freshchat.io</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<!--<div class="bar">
-    <div class="image" style="float:left;height:30px;">
-        <a href="" id="open_fc_widget"  onClick="openWidget()"><img src="../img/logo.jpg" alt=""></a>
+    <div id="custom_fc_button" style="visibility:hidden;" >
+       <a  id="open_fc_widget" onClick="openWidget()" style="cursor:pointer;"> <img src="Single logo.jpg" alt="">
+        <p>Chat with us</p>
+    </a>
     </div>
-    <div class="text" style="float: right;">
-        <p>Chat With Us</p>
-    </div>
-</div>-->
-
-
-
-<div id="custom_fc_button" style="visibility:hidden;">
-
-  <a id="open_fc_widget" onClick="openWidget()" style="cursor:pointer;"><img id="imageicon" src="logo.jpg" />
-
-  </a>
-</div>
-<script>
-    window.fcSettings = {
-        token: "66d00865-c20f-41d6-b126-9b9b7cbac056",
-        host: "https://wchat.freshchat.com",
-        config: {
-            headerProperty: {
-                hideChatButton: true
+    <script>
+        window.fcSettings = {
+            token: "66d00865-c20f-41d6-b126-9b9b7cbac056",
+            host: "https://wchat.freshchat.com",
+            config: {
+                headerProperty: {
+                    hideChatButton: true
+                }
+            },
+            onInit: function() {
+                window.fcWidget.on("widget:loaded",function() {
+                    document.getElementById('custom_fc_button').style.visibility = 'visible';
+                    window.fcWidget.on("unreadCount:notify", function(resp) {
+                        console.log(resp);
+                        test = resp;
+                    });
+                    window.fcWidget.on("widget:closed", function() {
+                        document.getElementById('fc_frame').style.visibility = 'hidden';
+                        document.getElementById('open_fc_widget').style.visibility = 'visible';
+                        document.getElementById('custom_fc_button').style.visibility = 'visible';
+                    });
+                    window.fcWidget.on("widget:opened", function(resp) {
+                        document.getElementById('open_fc_widget').style.visibility = 'hidden';
+                        document.getElementById('custom_fc_button').style.visibility = 'hidden';
+                    });
+                });
             }
-        },
-        onInit: function() {
-            window.fcWidget.on("widget:loaded",function() {
-                document.getElementById('custom_fc_button').style.visibility = 'visible';
-                window.fcWidget.on("unreadCount:notify", function(resp) {
-                    console.log(resp);
-                    test = resp;
-                });
-                window.fcWidget.on("widget:closed", function() {
-                    document.getElementById('fc_frame').style.visibility = 'hidden';
-                    document.getElementById('open_fc_widget').style.visibility = 'visible';
-                });
-                window.fcWidget.on("widget:opened", function(resp) {
-                    document.getElementById('open_fc_widget').style.visibility = 'hidden';
-                });
-            });
-        }
-    };
-
-
-    var openWidget = function() {
-        document.getElementById('fc_frame').style.visibility = 'visible';
-        window.fcWidget.open();
-    };
-
-</script>
-<script src="https://wchat.freshchat.com/js/widget.js" async></script>
-
-
+        };
+    
+    
+        var openWidget = function() {
+            document.getElementById('fc_frame').style.visibility = 'visible';
+            window.fcWidget.open();
+        };
+    
+    </script>
+    <script src="https://wchat.freshchat.com/js/widget.js" async></script>
 </body>
 </html>
