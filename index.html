@@ -1,95 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Freshchat.io</title>
-   
-    <style>
-       @import url('https://fonts.googleapis.com/css?family=Niramit');
-
-
-html,body{
-    margin:0;
-    padding: 0;
-    font-family: 'Niramit', sans-serif;
-
-}
-
-#custom_fc_button{
-    position: fixed;
-    bottom: 0px;
-    right: 40px;
-    background: #134321;
-    /* border-radius: 3px; */
-    padding: 5px;
-    width: 250px;
-    height: 30px;
-    cursor: pointer;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
-
-#custom_fc_button img{ 
-    float: left;
-    width:35px;
-    height:35px;
-    border: 5px solid #134321;
-    border-radius: 50%;
-    margin-top:-15px;
-}
-
-#custom_fc_button p{
-    margin-top:1px;
-    text-align: left;
-    margin-left: 60px;
-    color: #e4ebe1;
-}
-    </style>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>
+        Girish Sukinkar | Portfolio
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="main.css">    
 </head>
 <body>
-    <div id="custom_fc_button" style="visibility:hidden;" >
-       <a  id="open_fc_widget" onClick="openWidget()" style="cursor:pointer;"> <img src="logo.jpg" alt="mflogo">
-        <p>Chat with us</p>
-    </a>
+    <div class="navBar">
+        <h3 class="name">GIRISH SUKINKAR</h3>
+        <label for="toggleMenu">&#9776;</label>
+        <input type="checkbox" id="toggleMenu">
+        <div class="navMenus">
+            <a href="#">Contact</a>
+            <a href=""><span>Work</span></a>
+            <a href=""></a>
+        </div>
     </div>
-    <script>
-        window.fcSettings = {
-            token: "66d00865-c20f-41d6-b126-9b9b7cbac056",
-            host: "https://wchat.freshchat.com",
-            config: {
-                headerProperty: {
-                    hideChatButton: true
-                }
-            },
-            onInit: function() {
-                window.fcWidget.on("widget:loaded",function() {
-                    document.getElementById('custom_fc_button').style.visibility = 'visible';
-                    window.fcWidget.on("unreadCount:notify", function(resp) {
-                        console.log(resp);
-                        test = resp;
-                    });
-                    window.fcWidget.on("widget:closed", function() {
-                        document.getElementById('fc_frame').style.visibility = 'hidden';
-                        document.getElementById('open_fc_widget').style.visibility = 'visible';
-                        document.getElementById('custom_fc_button').style.visibility = 'visible';
-                    });
-                    window.fcWidget.on("widget:opened", function(resp) {
-                        document.getElementById('open_fc_widget').style.visibility = 'hidden';
-                        document.getElementById('custom_fc_button').style.visibility = 'hidden';
-                    });
-                });
-            }
-        };
-    
-    
-        var openWidget = function() {
-            document.getElementById('fc_frame').style.visibility = 'visible';
-            window.fcWidget.open();
-        };
-    
-    </script>
-    <script src="https://wchat.freshchat.com/js/widget.js" async></script>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-1 col-sm-12 offset-sm-2 col-xs-12">
+                <div class="skills-section">
+                    <br>
+                    <div class="sideline"></div>
+                     <div class="designation-background">
+                           
+                     </div>
+                     <h4>FULL STACK DEVELOPER</h4>
+                     <!-- <div class="line"></div> -->
+                     <br> 
+                        <p>I work at Moneyfront.in </p>
+                </div>
+                
+            </div>
+            <div class="col-lg-3 offset-lg-1  ">
+                <div class="skills-box">UI/UX designer</div>
+                <div class="skills-box">Backend developer</div>
+                <div class="skills-box">Fron-end developer</div>
+                <div class="skills-box">PHP</div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
