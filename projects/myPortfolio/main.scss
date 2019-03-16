@@ -1,0 +1,168 @@
+$tablet: 1012px;
+$mobile: 640px;
+
+@mixin tablet{
+    @media (max-width: #{$tablet}){
+        @content;
+    }
+}
+@mixin mobile{
+    @media (max-width: #{$mobile}){
+        @content;
+    }
+}
+
+$colors : (
+    white:#fff,
+    about:#2B2B2A,
+    fullstack: #b0eddd,
+    digital: #e5e0db,
+    skills: #c3c0b4,
+    hobbies:#D7E1EC,
+    contact: #b0eddd
+);
+
+$para: 12px;
+
+@function color($color-name){
+        @return map-get($colors,$color-name)
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family:  open sans,sans-serif;
+}
+header{
+    background: red;
+    height: 4em;
+}
+.nav {
+    position:absolute;
+    left:-100px;
+    width:100px;
+    transition: left 1s ease-out;
+    background: #eaeaea;
+}
+#toggleMenuBar:checked + .nav {
+    left:0;
+    width: 60vw;
+    height: 60vh;
+    z-index: 10;
+}
+
+.context {
+    padding:30px;
+}
+.about{
+    position: relative;
+    color: color(white);
+    overflow: hidden;
+    background: color(about);
+    .image{
+        position: absolute;
+        right: 0;
+    }
+    .context {
+        display: block;
+        width: 50%;
+    }
+}
+.full-stack{
+    
+    background: color(fullstack);
+}
+.digital{
+    
+    background: color(digital);
+}
+.skills{
+    
+    background-color: color(skills);
+  
+}
+
+.hobbies{
+    
+    background: color(hobbies);
+}
+.contact{
+    
+    background: color(contact);
+}
+
+// inside grids
+
+
+
+
+@include tablet{
+    .wrapper{
+        display: grid;
+        grid-template-columns: 1fr 1fr ;
+        grid-auto-rows: minmax(200px, auto);
+        
+    }
+    .about{
+        grid-column:1/3;
+       
+    }
+    .full-stack{
+        grid-column:1/2;
+       
+    }
+    .digital{
+        grid-column:2/3;
+       
+    }
+    .skills{
+        grid-column:1/2;
+        
+      
+    }
+
+    .hobbies{
+        grid-column:2/3;
+        background: color(hobbies);
+    }
+    .contact{
+        grid-column:1/3;
+        background: color(contact);
+    }
+
+}
+
+@include mobile{
+  
+    .about{
+        grid-column:1/3;
+      p {
+          font-size: $para;
+      }
+    }
+    .full-stack{
+        grid-column:1/3;
+       
+    }
+    .digital{
+        grid-column:1/3;
+       
+    }
+    .skills{
+        grid-column:1/3;
+       
+      
+    }
+
+    .hobbies{
+        grid-column:1/3;
+        
+    }
+    .contact{
+        grid-column:1/3;
+       
+    }
+
+}
+
+

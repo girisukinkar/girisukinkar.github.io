@@ -1,0 +1,52 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 80%;
+  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+aside {
+  -webkit-clip-path: polygon(61% 0, 100% 44%, 100% 100%, 0 100%, 0 0);
+          clip-path: polygon(61% 0, 100% 44%, 100% 100%, 0 100%, 0 0);
+  background-color: #a90329;
+}
+
+nav {
+  height: 30px;
+  background-color: #a90329;
+  -webkit-box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.2);
+}
+
+nav #logo {
+  float: left;
+  color: #fff;
+}
+
+nav ul {
+  margin: 0;
+  padding: 10px;
+  float: right;
+}
+
+nav ul li {
+  list-style-type: none;
+  display: inline;
+  padding: 10px;
+  margin: 0  10px;
+  font-weight: bolder;
+}
+
+nav ul li a {
+  color: #fff;
+  padding: 10px 10px;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  background-color: yellow;
+  color: black;
+}
+/*# sourceMappingURL=main.css.map */
