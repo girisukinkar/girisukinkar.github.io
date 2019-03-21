@@ -11,7 +11,7 @@
 </head>
 <body>
 
-    <header>
+    <header id="he">
       <input type="text" id="mutual-fund" placeholder="Type Here...">
       <ul class="mflist">
         <!-- 
@@ -21,7 +21,20 @@
     <div class="fund-details">
   
     </div>
+    <div class="btn"></div>
+   
 
    <script src="nav.js"></script>
+   <script>
+   window.onscroll = function() {scrollFunction()};
+
+      function scrollFunction() {
+        if (document.body.scrollTop > 900 || document.documentElement.scrollTop > 900) {
+          document.getElementById("topBtn").style.display = "block";
+        } else {
+          document.getElementById("topBtn").style.display = "none";
+        }
+      }
+   </script>
 </body>
 </html>

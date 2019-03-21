@@ -35,6 +35,10 @@ const mutualfund = document.querySelector('#mutual-fund');
             <p class="nav">${Math.round(nav[3])}</p>
             </div>`).join('');
             document.querySelector('.fund-details').innerHTML = navDataHTML;
+            document.querySelector('.btn').innerHTML = ` <div id="topBtn">
+            <a href="#he"> <button>&uarr;<br>
+            Top</button></a>
+          </div>`;
         }
       
       

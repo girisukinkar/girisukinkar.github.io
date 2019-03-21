@@ -2,6 +2,7 @@ html, body{
     font-family: 'Source Sans Pro', sans-serif;
 
     font-size: 12px;
+    scroll-behavior: smooth;
 
 }
 *{
@@ -96,4 +97,20 @@ P:before{
     text-align: left;
     color: grey;
     
+}
+#topBtn {
+    display: none;
+}
+#topBtn button {
+    border:none;
+    border-radius: 50%;
+    outline:none;
+    height: 50px;
+    width:50px;
+    text-align: center;
+    font-size: 10px;
+    position: fixed;
+    bottom: 20px;
+    z-index:999;
+    right: 20px;
 }
