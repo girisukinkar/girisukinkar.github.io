@@ -1,0 +1,199 @@
+html, body {
+  font-family: 'TruenoRegular';
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border-radius: 20px;
+}
+
+.box {
+  background: #fcfcfa;
+  border-radius: 5px;
+  padding: 15px;
+  -webkit-box-shadow: 0 0 14px -10px rgba(0, 0, 0, 0.75);
+          box-shadow: 0 0 14px -10px rgba(0, 0, 0, 0.75);
+}
+
+#introduction {
+  background: -webkit-gradient(linear, left top, right top, color-stop(50%, #224aaa), color-stop(50%, #fff));
+  background: linear-gradient(to right, #224aaa 50%, #fff 50%);
+  padding: 15px;
+}
+
+#introduction .box {
+  position: relative;
+}
+
+#introduction .box h2 {
+  text-shadow: 2px 2px 4px #b4b4b4;
+  color: #444444;
+  font-weight: bolder;
+  font-size: 3em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+#introduction .box h2 span {
+  color: #224aaa;
+}
+
+#introduction .box h4 {
+  font-size: 1.5em;
+  line-height: 0.1;
+  color: #282828;
+}
+
+#introduction .box p {
+  color: #444444;
+  font-size: 1em;
+  opacity: 0.6;
+}
+
+#introduction .box button {
+  outline: none;
+  background-color: #282828;
+  border: none;
+  padding: 1em;
+  color: white;
+  position: absolute;
+  left: 60%;
+}
+
+#introduction .box .social-icons {
+  display: block;
+  text-align: center;
+}
+
+#introduction .box .social-icons ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+#introduction .box .social-icons ul li {
+  display: inline-block;
+  padding: 10px;
+  font-size: 50px;
+}
+
+#introduction .box .social-icons ul li .fa-linkedin {
+  color: #0073b1;
+}
+
+#introduction .box .social-icons ul li .fa-facebook {
+  color: #365899;
+}
+
+#introduction .box .social-icons ul li .fa-github {
+  color: #24292e;
+}
+
+.skills {
+  margin-top: 20px;
+  padding: 15px;
+}
+
+.skills .box {
+  position: relative;
+}
+
+.skills .box h2 {
+  color: #444444;
+}
+
+.skills .box p {
+  opacity: 0.6;
+}
+
+.skills .box p span a {
+  text-decoration: none;
+  color: #77ba43;
+}
+
+.skills .box .connect {
+  outline: none;
+  background-color: #282828;
+  border: none;
+  padding: 0.7em 2em;
+  color: white;
+  position: absolute;
+  left: 10%;
+}
+
+.skills .box .resume {
+  outline: none;
+  background-color: #224aaa;
+  border: none;
+  padding: 0.7em 2em;
+  color: white;
+  position: absolute;
+  right: 10%;
+}
+
+.project-heading {
+  margin: 0 auto;
+  display: block;
+  margin-top: 100px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.projects {
+  padding: 20px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(300px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 40px;
+}
+
+.projects img {
+  width: 100%;
+  overflow: hidden;
+}
+
+.projects button {
+  border: none;
+  outline: none;
+  padding: 20px 30px;
+  border-radius: 0;
+  color: white;
+  font-size: 17px;
+  background: #224aaa;
+  position: absolute;
+  bottom: -20px;
+  right: 0;
+}
+
+.projects button:hover {
+  background: #282828;
+}
+
+.card {
+  position: relative;
+  -webkit-box-shadow: 0 0 14px -10px rgba(0, 0, 0, 0.75);
+          box-shadow: 0 0 14px -10px rgba(0, 0, 0, 0.75);
+}
+
+.card .card-details {
+  padding: 15px;
+}
+
+.card p {
+  padding-bottom: 20px;
+}
+/*# sourceMappingURL=main.css.map */
