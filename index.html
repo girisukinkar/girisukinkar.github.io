@@ -1,90 +1,91 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>
-        Girish Sukinkar | Portfolio
-    </title>
+    <title>Girish Sukinkar | Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="main.css">    
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script src="js/main.js"></script>
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/trueno" type="text/css" />
 </head>
+
 <body>
-   
+    <div id="introduction">
+        <div class="box">
+            <h2>Hello.<br> <span> I'M GIRISH.</span></h2>
+            <h4>Full Stack Developer</h4>
+            <p>I ask a lot of questions to solve a single problem. Always curious to know new things around me and adapt
+                to positive environment.</p>
+            <div class="social-icons">
+                <ul>
+                    <li><a href="https://github.com/girisukinkar"><i class="fab fa-github"></i></a></li>
+                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                    <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                </ul>
+            </div>
+            <!-- <button>Know More!</button> -->
+        </div>
 
-    
-    <div class="navBar">
-        <h3 class="name">GIRISH SUKINKAR</h3>
-        <label for="toggleMenu">&#9776;</label>
-        <input type="checkbox" id="toggleMenu">
-        <div class="navMenus">
-            <a href="#">Contact</a>
-            <a href="#projects-section"><span>Work</span></a>
-            <a href=""></a>
+    </div>
+    <div class="lines-bg">
+
+    </div>
+    <div class="skills">
+        <div class="box">
+            <h2>Hire Me</h2>
+            <p>Working at <span><a href="https://www.moneyfront.in" target="_blank">Moneyfront.in</a></span> as
+                full-stack developer and part-time digital marketer</p>
+            <a href="https://www.linkedin.com/in/girish-sukinkar/"> <button class="connect">Connect</button></a>
+            <a href="Girish Sukinkar Resume.pdf" download> <button class="resume">Resume &nbsp;<i
+                        class="fas fa-download"></i></button></a>
         </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 offset-lg-1 col-sm-12 offset-sm-2 col-xs-12">
-                <div class="skills-section">
-                    <br>
-                    <div class="sideline"></div>
-                     <div class="designation-background">
-                          
-                     </div>
-                     <h4>FULL STACK DEVELOPER</h4>
-                     
-                     <!-- <div class="line"></div> -->
-                     <br> 
-                        <p>I work at <a href="https://www.moneyfront.in/" target="_blank">Moneyfront.in</a>   </p>
-                </div>
-                
-            </div>
-            <div class="col-lg-3 offset-lg-1  ">
-                <div class="skills-box">Digital Content Creator</div>
-                <div class="skills-box">Backend developer</div>
-                <div class="skills-box">Fron-end developer</div>
-                <div class="skills-box">PHP & Mysql</div>
-            </div>
-        </div>
-    </div>
-    
-    <section id="projects-section">
-        <div class="container">
-            <h2>Glance at my work</h2>
-            <div class="row">
-                    <div class="col-lg-4 col-sm-6 col-xs-12">
-                            <div class="projectcard">
-                                <a href="projects/mutual-fund/index.html" target="_blank"><img src="images/mutual-fund.png"  alt="" ></a> 
-                            </div>
-                    </div>
-                <div class="col-lg-4 col-sm-6 col-xs-12">
-                        <div class="projectcard">
-                            <a href="projects/Nik Portfolio/index.html" target="_blank"><img src="images/nikhil portfolio.png"  alt="" ></a> 
-                        </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-xs-12">
-                        <div class="projectcard">
-                                <a href="projects/cgpi calc/index.html" target="_blank"><img src="images/cgpi calculator.png"  alt="" ></a> 
-                        </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-xs-12" >
-                        <div class="projectcard">
-                                <div class="projectcard">
-                                        <a href="projects/siddhesh/index.html" target="_blank"><img src="images/shraddha cottage bg.png" alt="" ></a> 
-                                </div>
-                        </div>
-                </div>
-                <!-- <div class="col-lg-4 col-sm-6 col-xs-12">
-                        <div class="projectcard">
-                            
-                        </div>
-                </div> -->
-            </div>
-        </div>
-    </section>
+    <h2 class="project-heading">Projects So Far</h2>
+    <div class="projects">
 
-    
+        <div class="card">
+
+            <img src="img/cgpi.png" alt="CPGI Calculator">
+            <div class="card-details">
+                <h2>CGPA to Percentage</h2>
+                <p>Mumbai University CGPA to Percentage Calculator</p>
+
+                <a href="projects/cgpi calc/index.html"><button>&rarr;</button></a>
+            </div>
+        </div>
+        <div class="card">
+
+            <img src="img/mutualfund.png" alt="Mutual fund app">
+            <div class="card-details">
+                <h2>Nav History App</h2>
+                <p>Simple NAV of every mutual fund since inception date</p>
+                <a href="projects/mutual-fund/index.html"><button>&rarr;</button></a>
+            </div>
+        </div>
+        <div class="card">
+
+            <img src="img/cottage.png" alt="Shraddha Cottage">
+            <div class="card-details">
+                <h2>Shraddha Cottage</h2>
+                <p>Static website made for a friend</p>
+                <a href="projects/siddhesh/index.html"><button>&rarr;</button></a>
+            </div>
+        </div>
+        <div class="card">
+
+            <img src="img/nik.png" alt="Nikhil Portfolio">
+            <div class="card-details">
+                <h2>Bio static website</h2>
+                <p>Made a demo website to teach him how to build websites.</p>
+                <a href="projects/Nik Portfolio/index.html"><button>&rarr;</button></a>
+            </div>
+        </div>
+
+    </div>
 </body>
+
 </html>
