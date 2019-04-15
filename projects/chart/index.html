@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Chart Js demonstation</title>
+  </head>
+  <body>
+    <div class="container">
+      <canvas id="mainChart"> </canvas>
+      <canvas id="mainChart2"> </canvas>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <script>
+      const mainChart = document.querySelector("#mainChart").getContext("2d");
+      const mainChart2 = document.querySelector("#mainChart2").getContext("2d");
+
+      function charts(type, chartid) {
+        var c = new Chart(chartid, {
+          type: `${type}`,
+          data: {
+            labels: ["India", "USA", "UK"],
+            datasets: [
+              {
+                label: ["Population"],
+                data: [100, 10, 200],
+                backgroundColor: "#77ba43",
+                borderColor:'#77ba43',
+                fill:false
+              },
+
+              {
+                label: ["Votes"],
+                data: [142, 556, 114],
+                borderColor: "#222aa3",
+                fill:false
+              }
+            ]
+          }
+        });
+      }
+
+      charts("bar", "mainChart");
+
+      charts("line", "mainChart2");
+    </script>
+  </body>
+</html>
