@@ -1,296 +1,274 @@
-$primary : #224aaa;
-$secondary : #444444;
-$secondary-hard : #282828;
-$box : #fcfcfa;
-$para-opactiy : 0.6;
+$primary: #224aaa;
+$secondary: #444444;
+$secondary-hard: #282828;
+$box: #fcfcfa;
+$para-opactiy: 0.6;
 $box-shadow: 0 0 14px -10px rgba(0, 0, 0, 0.75);
-
 
 //media queries
 $tablet: 619px;
 
 @mixin tablet {
-    @media (min-width: #{$tablet}) {
-        @content;
-    }
+  @media (min-width: #{$tablet}) {
+    @content;
+  }
 }
 
 $desktop: 840px;
 @mixin desktop {
-    @media (min-width: #{$desktop}) {
-        @content;
-    }
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
 }
 
 html,
 body {
-    font-family: 'TruenoRegular';
-    font-weight: normal;
-    font-style: normal;
+  font-family: "TruenoRegular";
+  font-weight: normal;
+  font-style: normal;
 }
 
 body {
-    margin: 0;
-    height: 100vh;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  height: 100vh;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 a {
-    text-decoration: none;
-
+  text-decoration: none;
 }
 
 button {
-    border-radius: 20px;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
 .box {
-    background: $box;
-    border-radius: 5px;
-    padding: 15px;
-    box-shadow: 0 0 14px -10px rgba(0, 0, 0, 0.75);
+  background: $box;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0 0 14px -10px rgba(0, 0, 0, 0.75);
 }
 
 #introduction {
-    background: linear-gradient(to right, #224aaa 50%, #fff 50%);
-    padding: 15px;
+  background: linear-gradient(to right, #224aaa 50%, #fff 50%);
+  padding: 15px;
 
-
-
-    .box {
-        position: relative;
-
-        @include tablet {
-            width: 80%;
-            margin: 0 auto;
-        }
-        @include desktop{
-            width:60%;
-            padding: 20px;
-            
-        }
-
-        h2 {
-            text-shadow: 2px 2px 4px #b4b4b4;
-            color: $secondary;
-            font-weight: bolder;
-            font-size: 3em;
-            line-height: 1;
-            text-transform: uppercase;
-
-            span {
-                color: $primary;
-            }
-
-        }
-
-        h4 {
-            font-size: 1.5em;
-            line-height: 0.1;
-            color: $secondary-hard;
-        }
-
-        p {
-            color: $secondary;
-            font-size: 1em;
-            opacity: $para-opactiy;
-        }
-
-        button {
-            outline: none;
-            background-color: $secondary-hard;
-            border: none;
-            padding: 1em;
-            color: white;
-            position: absolute;
-            left: 60%;
-        }
-
-        .social-icons {
-            display: block;
-            text-align: center;
-
-            ul {
-                padding: 0;
-                list-style-type: none;
-
-                li {
-                    display: inline-block;
-                    padding: 10px;
-                    font-size: 50px;
-
-                    .fa-linkedin {
-                        color: #0073b1;
-                    }
-
-                    .fa-facebook {
-                        color: #365899;
-                    }
-
-                    .fa-github {
-                        color: #24292e;
-
-                    }
-                }
-            }
-        }
-
-    }
-}
-
-
-.skills {
-    margin-top: 20px;
-    padding: 15px;
-
-    .box {
-        position: relative;
-        @include tablet {
-            width: 80%;
-            margin: 0 auto;
-        }
-        @include desktop{
-            width:60%;
-            padding: 20px;
-            
-        }
-
-
-        h2 {
-
-            color: $secondary;
-        }
-
-        p {
-            opacity: $para-opactiy;
-
-            span {
-
-                a {
-                    text-decoration: none;
-                    color: #77ba43;
-
-                }
-
-            }
-        }
-
-        .connect {
-            outline: none;
-            background-color: $secondary-hard;
-            border: none;
-            padding: 0.7em 2em;
-            color: white;
-            position: absolute;
-            left: 10%;
-
-        }
-
-        .resume {
-            outline: none;
-            background-color: $primary;
-            border: none;
-            padding: 0.7em 2em;
-            color: white;
-            position: absolute;
-            right: 10%;
-
-
-        }
-    }
-}
-
-.project-heading {
-    margin: 0 auto;
-    display: block;
-    margin-top: 100px;
-    margin-bottom: 30px;
-    text-align: center;
-    font-size: 30px;
-}
-
-.projects {
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 40px;
-
-    img {
-        width: 100%;
-        overflow: hidden;
-
-    }
-
-    button {
-        border: none;
-        outline: none;
-        padding: 20px 30px;
-        border-radius: 0;
-        color: white;
-        font-size: 17px;
-        background: $primary;
-        position: absolute;
-        bottom: -20px;
-        right: 0;
-
-        &:hover {
-            background: $secondary-hard;
-        }
-    }
-
-}
-
-.card {
+  .box {
     position: relative;
-    box-shadow: $box-shadow;
 
-    .card-details {
-        padding: 15px;
+    @include tablet {
+      width: 80%;
+      margin: 0 auto;
+    }
+    @include desktop {
+      width: 60%;
+      padding: 20px;
+    }
+
+    h2 {
+      text-shadow: 2px 2px 4px #b4b4b4;
+      color: $secondary;
+      font-weight: bolder;
+      font-size: 3em;
+      line-height: 1;
+      text-transform: uppercase;
+
+      span {
+        color: $primary;
+      }
+    }
+
+    h4 {
+      font-size: 1.5em;
+      line-height: 0.1;
+      color: $secondary-hard;
     }
 
     p {
-
-        padding-bottom: 20px;
+      color: $secondary;
+      font-size: 1em;
+      opacity: $para-opactiy;
     }
 
+    button {
+      outline: none;
+      background-color: $secondary-hard;
+      border: none;
+      padding: 1em;
+      color: white;
+      position: absolute;
+      left: 60%;
+    }
 
+    .social-icons {
+      display: block;
+      text-align: center;
+
+      ul {
+        padding: 0;
+        list-style-type: none;
+
+        li {
+          display: inline-block;
+          padding: 10px;
+          font-size: 50px;
+
+          .fa-linkedin {
+            color: #0073b1;
+          }
+
+          .fa-facebook {
+            color: #365899;
+          }
+
+          .fa-github {
+            color: #24292e;
+          }
+        }
+      }
+    }
+  }
+}
+
+.skills {
+  margin-top: 20px;
+  padding: 15px;
+
+  .box {
+    position: relative;
+    @include tablet {
+      width: 80%;
+      margin: 0 auto;
+    }
+    @include desktop {
+      width: 60%;
+      padding: 20px;
+    }
+
+    h2 {
+      color: $secondary;
+    }
+
+    p {
+      opacity: $para-opactiy;
+
+      span {
+        a {
+          text-decoration: none;
+          color: #77ba43;
+        }
+      }
+    }
+
+    .connect {
+      outline: none;
+      background-color: $secondary-hard;
+      border: none;
+      padding: 0.7em 2em;
+      color: white;
+      position: absolute;
+      left: 10%;
+    }
+
+    .resume {
+      outline: none;
+      background-color: $primary;
+      border: none;
+      padding: 0.7em 2em;
+      color: white;
+      position: absolute;
+      right: 10%;
+    }
+  }
+}
+
+.project-heading {
+  margin: 0 auto;
+  display: block;
+  margin-top: 100px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.projects {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 40px;
+
+  img {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  button {
+    border: none;
+    outline: none;
+    padding: 20px 30px;
+    border-radius: 0;
+    color: white;
+    font-size: 17px;
+    background: $primary;
+    position: absolute;
+    bottom: -20px;
+    right: 0;
+
+    &:hover {
+      background: $secondary-hard;
+    }
+  }
+}
+
+.card {
+  position: relative;
+  box-shadow: $box-shadow;
+
+  .card-details {
+    padding: 15px;
+  }
+
+  p {
+    padding-bottom: 20px;
+  }
 }
 
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* Modal Content */
-  .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-  }
-  
-  /* The Close Button */
-  .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}

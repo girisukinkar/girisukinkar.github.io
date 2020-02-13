@@ -1,0 +1,3 @@
+Use Fluid Typography - https://css-tricks.com/snippets/css/fluid-typography/
+
+How to make a timeline - https://css-tricks.com/snippets/css/unordered-list-as-a-timeline/

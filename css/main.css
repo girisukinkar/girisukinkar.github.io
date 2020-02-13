@@ -1,6 +1,6 @@
 html,
 body {
-  font-family: 'TruenoRegular';
+  font-family: "TruenoRegular";
   font-weight: normal;
   font-style: normal;
 }
@@ -19,6 +19,7 @@ a {
 
 button {
   border-radius: 20px;
+  cursor: pointer;
 }
 
 .box {
