@@ -1,0 +1,65 @@
+(function ($) {
+  $.fn.disableSelection = function () {
+    return this.attr("unselectable", "on").css("user-select", "none").on("selectstart", false);
+  };
+})(jQuery);
+
+$.fn.preload = function () {
+  this.each(function () {
+    $("<img/>")[0].src = this;
+  });
+};
+
+$(document).ready(function () {
+  var mouse;
+  var state = "on";
+  $("body").disableSelection();
+  $(["images/chain_on.png", "images/chain_off.png"]).preload();
+
+  //   $("#bulb_" + state).hide();
+  $("#chain_" + state).hide();
+
+  setTimeout(function () {
+    $("#message").fadeOut(1500);
+  }, 2000);
+
+  $("#chain_container").draggable({
+    containment: "parent",
+    start: function (e) {
+      mouse = e.pageY;
+    },
+    stop: function (e) {
+      flipSwitch(e);
+      animateChain();
+    },
+  });
+
+  function animateChain() {
+    $("#chain_container").animate({ top: 0 }, 100);
+  }
+
+  function flipSwitch(e) {
+       const audio = document.querySelector("audio");
+    if (e.pageY >= mouse + 100) {
+      $("body").addClass(state);
+      //   $("#bulb_" + state).show();
+      $("#chain_" + state).show();
+
+      if (state == "on") {
+        state = "off";
+       audio.play();
+        console.log('off');
+    } else {
+
+        console.log('on');
+        state = "on";
+    
+        audio.pause(); 
+        console.log(audio);
+      }
+      $("body").removeClass(state);
+      //   $("#bulb_" + state).hide();
+      $("#chain_" + state).hide();
+    }
+  }
+});
