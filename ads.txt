@@ -1,1 +1,6 @@
 girish.come,12355,fsdvfihn13924rt87y,asdfasdf
+google.com, pub-8731210765202237, RESELLER, f08c47fec0942fa0
+rubiconproject.com, 17054, RESELLER, 0bfd66d529a55807
+tritondigital.com, 41183, DIRECT, 19b4454d0b87b58b 
+smartadserver.com, 3555, DIRECT
+appnexus.com, 3703, RESELLER, f5ab79cb980f11d1
