@@ -246,41 +246,8 @@ img {
   bottom: 1.5rem;
 }
 
-/*========== HOME ==========*/
-.home {
-  &__container {
-    height: calc(100vh - var(--header-height));
-    align-content: center;
-  }
-  &__title {
-    font-size: var(--biggest-font-size);
-    color: var(--first-color);
-    margin-bottom: var(--mb-1);
-  }
-  &__subtitle {
-    font-size: var(--h1-font-size);
-    color: var(--title-color);
-    margin-bottom: var(--mb-4);
-  }
-  &__img {
-    width: 300px;
-    justify-self: center;
-  }
-}
-
-/*========== BUTTONS ==========*/
-.button {
-  display: inline-block;
-  background-color: var(--first-color);
-  color: #fff;
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
-  transition: 0.3s;
-
-  &:hover {
-    background-color: var(--first-color-alt);
-  }
-}
+@import "sections/home";
+@import "sections/buttons";
 
 /*========== ABOUT ==========*/
 .about {
@@ -322,121 +289,62 @@ img {
   }
 }
 
-/*========== PRODUCT ==========*/
-.product {
-  &__container {
-    grid-template-columns: repeat(2, 1fr);
-    justify-content: center;
+@import "sections/products";
+
+/*========== JOIN US==========*/
+.join {
+  &__data {
+    text-align: center;
   }
-  &__content {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--container-color);
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 4px rgba(3, 74, 40, 0.15);
-    padding: 0.75rem;
+  &__description {
+    margin-bottom: var(--mb-5);
+  }
+  &__stores {
+    margin-bottom: var(--mb-4);
+  }
+  &__store {
+    width: 120px;
+    margin: 0 var(--mb-1);
   }
   &__img {
-    width: 100px;
-    align-self: center;
-    margin-bottom: var(--mb-2);
-  }
-  &__name,
-  &__preci {
-    font-weight: var(--font-semi-bold);
-    color: var(--title-color);
-  }
-  &__name {
-    font-size: var(--normal-font-size);
-  }
-  &__detail,
-  &__preci {
-    font-size: var(--small-font-size);
-  }
-  &__detail {
-    margin-bottom: var(--mb-1);
-  }
-  &__button {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    display: flex;
-    font-size: 1.25rem;
-    padding: 0.625rem 0.813rem;
-    border-radius: 0.5rem 0 0.5rem 0;
+    width: 230px;
+    justify-self: center;
   }
 }
 
-/*========== CONTACT ==========*/
-.contact {
-  &__container {
-    text-align: center;
-  }
-  &__description {
-    margin-bottom: var(--mb-3);
-  }
-}
-
-/*========== FOOTER ==========*/
-.footer {
-  &__container {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    row-gap: 2rem;
-  }
-  &__logo {
-    font-size: var(--h3-font-size);
-    color: var(--first-color);
-    font-weight: var(--font-semi-bold);
-  }
-  &__description {
-    display: block;
-    font-size: var(--small-font-size);
-    margin: 0.25rem 0 var(--mb-3);
-  }
-  &__social {
-    font-size: 1.5rem;
-    color: var(--title-color);
-    margin-right: var(--mb-2);
-  }
-  &__title {
-    font-size: var(--h2-font-size);
-    color: var(--title-color);
-    margin-bottom: var(--mb-2);
-  }
-  &__link {
-    display: inline-block;
-    color: var(--text-color);
-    margin-bottom: var(--mb-1);
-
-    &:hover {
-      color: var(--first-color);
-    }
-  }
-  &__copy {
-    text-align: center;
-    font-size: var(--small-font-size);
-    color: var(--text-color-light);
-    margin-top: 3.5rem;
-  }
-}
+@import "sections/contact";
+@import "sections/footer";
 
 /*========== MEDIA QUERIES ==========*/
+
+@media screen and (max-width: 478px) {
+  .nav__logo {
+    img {
+      height: 30px;
+      width: auto;
+    }
+  }
+}
+
 @media screen and (min-width: 576px) {
   .home__container,
-  .about__container {
+  .about__container,
+  .join__container {
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
   }
 
   .about__data,
   .about__initial,
+  .join__data,
+  .join__initial,
   .contact__container,
   .contact__initial {
     text-align: initial;
   }
 
-  .about__img {
+  .about__img,
+  .join__img {
     width: 380px;
     order: -1;
   }
@@ -494,6 +402,7 @@ img {
   .product {
     &__container {
       grid-template-columns: repeat(3, 210px);
+      -moz-column-gap: 4rem;
       column-gap: 4rem;
     }
     &__content {
@@ -502,6 +411,10 @@ img {
     &__img {
       width: 130px;
     }
+  }
+
+  .join__store {
+    margin: 0 var(--mb-1) 0 0;
   }
 }
 
@@ -515,7 +428,9 @@ img {
     width: 500px;
   }
 
-  .about__container {
+  .about__container,
+  .join__container {
+    -moz-column-gap: 7rem;
     column-gap: 7rem;
   }
 }

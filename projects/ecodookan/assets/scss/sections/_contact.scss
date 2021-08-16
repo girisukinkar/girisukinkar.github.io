@@ -1,0 +1,13 @@
+/*========== CONTACT ==========*/
+.contact{
+    &__container{
+        border-radius: 1rem;
+        background-color: var(--first-color);
+        color: #fff;
+        padding: 1rem 2rem; 
+        text-align: center;
+    }
+    &__description{
+        margin-bottom: var(--mb-3);
+    }
+}

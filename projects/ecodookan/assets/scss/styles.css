@@ -295,15 +295,25 @@ img {
 .button {
   display: inline-block;
   background-color: var(--first-color);
-  color: #fff;
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
+  color: #FFF;
+  padding: .75rem 1rem;
+  border-radius: .5rem;
+  -webkit-transition: .3s;
+  transition: .3s;
 }
 
 .button:hover {
   background-color: var(--first-color-alt);
+}
+
+.button__white {
+  background-color: #FFF;
+  color: var(--first-color);
+}
+
+.button__white:hover {
+  background-color: var(--first-color-alt);
+  color: #fff;
 }
 
 /*========== ABOUT ==========*/
@@ -369,10 +379,10 @@ img {
       -ms-flex-direction: column;
           flex-direction: column;
   background-color: var(--container-color);
-  border-radius: 0.5rem;
+  border-radius: .5rem;
   -webkit-box-shadow: 0 2px 4px rgba(3, 74, 40, 0.15);
           box-shadow: 0 2px 4px rgba(3, 74, 40, 0.15);
-  padding: 0.75rem;
+  padding: .75rem;
 }
 
 .product__img {
@@ -408,12 +418,40 @@ img {
   display: -ms-flexbox;
   display: flex;
   font-size: 1.25rem;
-  padding: 0.625rem 0.813rem;
-  border-radius: 0.5rem 0 0.5rem 0;
+  padding: .625rem .813rem;
+  border-radius: .5rem 0 .5rem 0;
+}
+
+/*========== JOIN US==========*/
+.join__data {
+  text-align: center;
+}
+
+.join__description {
+  margin-bottom: var(--mb-5);
+}
+
+.join__stores {
+  margin-bottom: var(--mb-4);
+}
+
+.join__store {
+  width: 120px;
+  margin: 0 var(--mb-1);
+}
+
+.join__img {
+  width: 230px;
+  -ms-grid-column-align: center;
+      justify-self: center;
 }
 
 /*========== CONTACT ==========*/
 .contact__container {
+  border-radius: 1rem;
+  background-color: var(--first-color);
+  color: #fff;
+  padding: 1rem 2rem;
   text-align: center;
 }
 
@@ -470,9 +508,17 @@ img {
 }
 
 /*========== MEDIA QUERIES ==========*/
+@media screen and (max-width: 478px) {
+  .nav__logo img {
+    height: 30px;
+    width: auto;
+  }
+}
+
 @media screen and (min-width: 576px) {
   .home__container,
-  .about__container {
+  .about__container,
+  .join__container {
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
     -webkit-box-align: center;
@@ -481,11 +527,14 @@ img {
   }
   .about__data,
   .about__initial,
+  .join__data,
+  .join__initial,
   .contact__container,
   .contact__initial {
     text-align: initial;
   }
-  .about__img {
+  .about__img,
+  .join__img {
     width: 380px;
     -webkit-box-ordinal-group: 0;
         -ms-flex-order: -1;
@@ -550,6 +599,9 @@ img {
   .product__img {
     width: 130px;
   }
+  .join__store {
+    margin: 0 var(--mb-1) 0 0;
+  }
 }
 
 @media screen and (min-width: 960px) {
@@ -560,7 +612,8 @@ img {
   .home__img {
     width: 500px;
   }
-  .about__container {
+  .about__container,
+  .join__container {
     -webkit-column-gap: 7rem;
             column-gap: 7rem;
   }
