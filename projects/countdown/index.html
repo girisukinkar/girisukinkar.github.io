@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Countdown</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1 id="headline"></h1>
+    <div id="countdown">
+        <ul>
+            <li><span id="days"></span>days</li>
+            <li><span id="hours"></span>Hours</li>
+            <li><span id="minutes"></span>Minutes</li>
+            <li><span id="seconds"></span>Seconds</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    (function () {
+        const gitaQuotes = [
+            "You have the right to perform your duties, but you are not entitled to the fruits of your actions.",
+            "Change is the law of the universe. You can be a millionaire, or a pauper in an instant.",
+            "Set your heart upon your work, but never on its reward.",
+            "A person is made by their beliefs. As they believe, so they become.",
+            "When meditation is mastered, the mind is unwavering like the flame of a lamp in a windless place.",
+            "The mind can act like an enemy for those who do not control it.",
+            "The soul is neither born, nor does it die.",
+            "Perform your obligatory duty, because action is indeed better than inaction.",
+            "There is neither this world, nor the world beyond, nor happiness for the one who doubts.",
+            "We’re kept from our goal not by obstacles, but by a clear path to a lesser goal.",
+            "The only way you can conquer me is through love, and there I am gladly conquered.",
+            "Among all kinds of killers, time is the ultimate because time kills everything.",
+            "Fear not. What is not real, never was and never will be. What is real, always was and cannot be destroyed.",
+            "The wise work for the welfare of the world, without thought for themselves.",
+            "A person can rise through the efforts of their own mind; or draw themselves down, in the same manner.",
+            "He who has no attachments can truly love others, for his love is pure and divine.",
+            "Whatever happened, happened for the good. Whatever is happening, is happening for the good. Whatever will happen, will also happen for the good.",
+            "You came empty handed, and you will leave empty handed.",
+            "You have the right to work, but never to the fruit of work.",
+            "One who sees inaction in action, and action in inaction, is intelligent among men.",
+            "A person is considered superior who is impartial towards friends, companions, and enemies.",
+            "Reshape yourself through the power of your will.",
+            "Even if you are considered the most sinful of all sinners, when you are situated in the boat of transcendental knowledge, you will be able to cross over the ocean of miseries.",
+            "The mind is restless and difficult to restrain, but it is subdued by practice.",
+            "When your intellect crosses beyond the mire of delusion, you shall attain indifference to what has been heard and what is yet to be heard.",
+            "When a person responds to the joys and sorrows of others as if they were his own, he has attained the highest spiritual union.",
+            "Whatever you do, make it an offering to me – the food you eat, the sacrifices you make, the help you give, even your suffering.",
+            "It is better to live your own destiny imperfectly than to live an imitation of somebody else’s life with perfection.",
+            "The power of God is with you at all times; through the activities of mind, senses, breathing, and emotions; and is constantly doing all the work using you as a mere instrument.",
+            "Among all kinds of killers, time is the ultimate because time kills everything.",
+            "The peace of God is with them whose mind and soul are in harmony, who are free from desire and wrath, who know their own soul.",
+            "As a man can drink water from any side of a full tank, so the skilled theologian can wrest from any scripture that which will serve his purpose.",
+            "Hell has three gates: lust, anger, and greed.",
+            "I am the beginning, middle, and end of creation.",
+            "There is neither this world, nor the world beyond. nor happiness for the one who doubts.",
+            "I am the goal of life, the Lord, the supporter, the witness, the abode, the refuge, the most dear friend.",
+            "The wise work for the welfare of the world, without thought for themselves.",
+            "Perform your obligatory duty, because action is indeed better than inaction.",
+            "I am the source of all spiritual and material worlds. Everything emanates from me.",
+            "Reshape yourself through the power of your will.",
+            "When your intellect crosses beyond the mire of delusion, you shall attain indifference to what has been heard and what is yet to be heard.",
+            "Whatever happened, happened for the good. Whatever is happening, is happening for the good. Whatever will happen, will also happen for the good.",
+            "Fear not. What is not real, never was and never will be. What is real, always was and cannot be destroyed.",
+            "The peace of God is with them whose mind and soul are in harmony, who are free from desire and wrath, who know their own soul.",
+            "The only way you can conquer me is through love, and there I am gladly conquered.",
+            "Among all kinds of killers, time is the ultimate because time kills everything.",
+            "Delusion arises from anger. The mind is bewildered by delusion.",
+            "When a person responds to the joys and sorrows of others as if they were his own, he has attained the highest spiritual union.",
+            "Hell has three gates: lust, anger, and greed.",
+            "The mind is restless and difficult to restrain, but it is subdued by practice.",
+            "A man is made by his beliefs. As he believes, so he is.",
+            "He who has no attachments can truly love others, for his love is pure and divine.",
+            "We are kept from our goal not by obstacles, but by a clear path to a lesser goal.",
+            "Whatever you do, make it an offering to me – the food you eat, the sacrifices you make, the help you give, even your suffering.",
+            "A person can rise through the efforts of their own mind; or draw themselves down, in the same manner.",
+            "The soul is neither born, nor does it die.",
+            "The only way you can conquer me is through love, and there I am gladly conquered.",
+            "A person is made by their beliefs. As they believe, so they become.",
+            "Change is the law of the universe. You can be a millionaire, or a pauper in an instant.",
+            "You have the right to perform your duties, but you are not entitled to the fruits of your actions.",
+            "Set your heart upon your work, but never on its reward.",
+            "A person is made by their beliefs. As they believe, so they become.",
+            "When meditation is mastered, the mind is unwavering like the flame of a lamp in a windless place.",
+            "The mind can act like an enemy for those who do not control it.",
+            "The soul is neither born, nor does it die.",
+            "Perform your obligatory duty, because action is indeed better than inaction.",
+            "There is neither this world, nor the world beyond, nor happiness for the one who doubts.",
+            "We’re kept from our goal not by obstacles, but by a clear path to a lesser goal.",
+            "The only way you can conquer me is through love, and there I am gladly conquered.",
+            "Among all kinds of killers, time is the ultimate because time kills everything.",
+            "Fear not. What is not real, never was and never will be. What is real, always was and cannot be destroyed.",
+            "The wise work for the welfare of the world, without thought for themselves.",
+            "A person can rise through the efforts of their own mind; or draw themselves down, in the same manner.",
+            "He who has no attachments can truly love others, for his love is pure and divine.",
+            "Whatever happened, happened for the good. Whatever is happening, is happening for the good. Whatever will happen, will also happen for the good.",
+            "You came empty handed, and you will leave empty handed.",
+            "You have the right to work, but never to the fruit of work.",
+            "One who sees inaction in action, and action in inaction, is intelligent among men.",
+            "A person is considered superior who is impartial towards friends, companions, and enemies.",
+            "Reshape yourself through the power of your will.",
+            "Even if you are considered the most sinful of all sinners, when you are situated in the boat of transcendental knowledge, you will be able to cross over the ocean of miseries.",
+            "The mind is restless and difficult to restrain, but it is subdued by practice.",
+            "When your intellect crosses beyond the mire of delusion, you shall attain indifference to what has been heard and what is yet to be heard.",
+            "When a person responds to the joys and sorrows of others as if they were his own, he has attained the highest spiritual union.",
+            "Whatever you do, make it an offering to me – the food you eat, the sacrifices you make, the help you give, even your suffering.",
+            "It is better to live your own destiny imperfectly than to live an imitation of somebody else’s life with perfection.",
+            "The power of God is with you at all times; through the activities of mind, senses, breathing, and emotions; and is constantly doing all the work using you as a mere instrument.",
+            "Among all kinds of killers, time is the ultimate because time kills everything.",
+            "The peace of God is with them whose mind and soul are in harmony, who are free from desire and wrath, who know their own soul.",
+            "As a man can drink water from any side of a full tank, so the skilled theologian can wrest from any scripture that which will serve his purpose."
+        ];
+
+        const randomIndex = Math.floor(Math.random() * gitaQuotes.length);
+
+        document.querySelector('#headline').innerHTML = gitaQuotes[randomIndex]
+
+        const second = 1000,
+            minute = second * 60,
+            hour = minute * 60,
+            day = hour * 24;
+
+        //I'm adding this section so I don't have to keep updating this pen every year :-)
+        //remove this if you don't need it
+        let today = new Date(),
+            dd = String(today.getDate()).padStart(2, "0"),
+            mm = String(today.getMonth() + 1).padStart(2, "0"),
+            yyyy = today.getFullYear(),
+            nextYear = yyyy + 1,
+            dayMonth = "11/20/",
+            birthday = dayMonth + yyyy;
+
+        today = mm + "/" + dd + "/" + yyyy;
+        if (today > birthday) {
+            birthday = dayMonth + nextYear;
+        }
+        //end
+
+        const countDown = new Date(birthday).getTime(),
+            x = setInterval(function() {
+
+                const now = new Date().getTime(),
+                    distance = countDown - now;
+
+                document.getElementById("days").innerText = Math.floor(distance / (day)),
+                    document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+                    document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+                    document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+
+                //do something later when date is reached
+                if (distance < 0) {
+                    clearInterval(x);
+                }
+                //seconds
+            }, 0)
+    }());
+</script>
+
+</body>
+</html>
