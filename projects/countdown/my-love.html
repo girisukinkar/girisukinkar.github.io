@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Being Together</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=Playwrite+US+Modern:wght@100..400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html {
+        font-family: "Playwrite US Modern", cursive;
+      }
+      body {
+        background: hsla(298, 68%, 90%, 1);
+
+        background: linear-gradient(
+          90deg,
+          hsla(298, 68%, 90%, 1) 0%,
+          hsla(30, 82%, 91%, 1) 100%
+        );
+
+        background: -moz-linear-gradient(
+          90deg,
+          hsla(298, 68%, 90%, 1) 0%,
+          hsla(30, 82%, 91%, 1) 100%
+        );
+
+        background: -webkit-linear-gradient(
+          90deg,
+          hsla(298, 68%, 90%, 1) 0%,
+          hsla(30, 82%, 91%, 1) 100%
+        );
+
+        filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#F6D5F7", endColorstr="#FBE9D7", GradientType=1 );
+      }
+      marquee {
+        position: absolute;
+        top: 35%;
+        height: 100vh;
+      }
+
+      h1 {
+        color: red;
+    
+        font-size: 30px;
+      }
+
+      .letter-title {
+        text-align: center;
+        font-size: 30px;
+      }
+      #show {
+        font-size: 50px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <audio id="backgroundMusic" src="./128-Duniyaa - Luka Chuppi 128 Kbps.mp3" ></audio>
+    <div class="letter-title">Click the letter to open your message</div>
+    <div id="show">💌</div>
+    <div id="text"></div>
+    <div id="final" class="letter-title"></div>
+    <script>
+        document.getElementById('show').addEventListener('click', function() {
+            var audio = document.getElementById('backgroundMusic');
+            audio.play();
+            audio.volume = 0.3
+        });
+        document.querySelector('#show').addEventListener('click', () => {
+            const text = document.querySelector('#text')
+            text.innerHTML =  `
+            <marquee behavior="sroll" direction="left">
+      <h1>
+        Mansi I want to say that I am lucky that you came into my life. Let's
+        shine bright and grow old together. 
+      </h1>
+    </marquee>`;
+
+    document.getElementById('show').style.visibility = 'hidden'
+    document.querySelector('.letter-title').style.visibility = 'hidden'
+        });
+        function onMarqueeEnd(){
+           document.querySelector('#text').innerHTML = 'My Moody Rasmalai and Foodie bai, I promise to handle all your mood swings and food swings for life. I love you ❤️'
+            // Your custom JavaScript code here
+        }
+        setTimeout(function() { onMarqueeEnd() }, 30000)
+    </script>
+  </body>
+</html>
