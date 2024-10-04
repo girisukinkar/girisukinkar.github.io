@@ -1,116 +1,445 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Girish Sukinkar | Developer</title>
+  </head>
+  <body>
+    <header class="header">
+      <h2 class="visually-hidden">Header</h2>
+      <div class="wrapper">
+        <nav class="header__nav">
+          <h2 class="visually-hidden">Navigation</h2>
+          <a href="/" class="header__home">
+            Girish Sukinkar
+            <span class="visually-hidden">(to home page)</span>
+          </a>
+          <a href="https://github.com/girisukinkar" class="header__social">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="24"
+              aria-labelledby="socialGitHub"
+              role="img"
+            >
+              <title id="socialGitHub">GitHub</title>
+              <path
+                fill="#FFF"
+                fill-rule="evenodd"
+                d="M12.304 0C5.506 0 0 5.506 0 12.304c0 5.444 3.522 10.042 8.413 11.672.615.108.845-.261.845-.584 0-.292-.015-1.261-.015-2.291-3.091.569-3.891-.754-4.137-1.446-.138-.354-.738-1.446-1.261-1.738-.43-.23-1.046-.8-.016-.815.97-.015 1.661.892 1.892 1.261 1.107 1.86 2.876 1.338 3.584 1.015.107-.8.43-1.338.784-1.646-2.738-.307-5.598-1.368-5.598-6.074 0-1.338.477-2.446 1.26-3.307-.122-.308-.553-1.569.124-3.26 0 0 1.03-.323 3.383 1.26.985-.276 2.03-.415 3.076-.415 1.046 0 2.092.139 3.076.416 2.353-1.6 3.384-1.261 3.384-1.261.676 1.691.246 2.952.123 3.26.784.861 1.26 1.953 1.26 3.307 0 4.721-2.875 5.767-5.613 6.074.446.385.83 1.123.83 2.277 0 1.645-.015 2.968-.015 3.383 0 .323.231.708.846.584a12.324 12.324 0 0 0 8.382-11.672C24.607 5.506 19.101 0 12.304 0Z"
+              />
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/in/girish-sukinkar/" class="header__social">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="24"
+              aria-labelledby="socialLinkedIn"
+              role="img"
+            >
+              <title id="socialLinkedIn">LinkedIn</title>
+              <path
+                fill="#FFF"
+                fill-rule="evenodd"
+                d="M5.551 3.304c-1.14 0-2.067.926-2.067 2.064 0 1.14.928 2.066 2.067 2.066a2.066 2.066 0 0 0 0-4.13ZM3.767 8.998v11.453h3.562L7.33 8.998H3.767Zm5.798 0V20.45l3.554.002.002-5.668c0-1.454.253-2.941 2.132-2.941 1.851 0 1.851 1.755 1.851 3.036v5.571l3.559-.001v-6.28c0-2.834-.517-5.457-4.27-5.457-1.763 0-2.916.997-3.368 1.85h-.05V8.997h-3.41ZM22.435 24H1.982c-.976 0-1.77-.777-1.77-1.732V1.731C.212.776 1.006 0 1.982 0h20.453c.98 0 1.777.776 1.777 1.73v20.538c0 .955-.797 1.732-1.777 1.732Z"
+              />
+            </svg>
+          </a>
+        </nav>
+      </div>
+    </header>
 
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Girish Sukinkar | Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" type="text/css" media="screen" href="css/main.css?v0.2" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <main id="main">
+      <section class="hero">
+        <div class="wrapper hero__wrapper bottom-border">
+          <div class="hero__content">
+            <picture>
+              <source
+                media="(min-width: 62.5em)"
+                srcset="/assets/images/image-profile-desktop.jpg"
+              />
+              <source
+                media="(min-width: 37.5em)"
+                srcset="/assets/images/image-profile-desktop.jpg"
+              />
+              <img
+                class="hero__image"
+                src="/assets/images/image-profile-desktop.jpg"
+                alt="picture of Girish"
+                width-="174"
+                height="383"
+              />
+            </picture>
+            <img
+              class="hero__rings"
+              src="/assets/images/pattern-rings.svg"
+              alt=""
+              width="530"
+              height="129"
+            />
+            <img
+              class="hero__circle"
+              src="/assets/images/pattern-circle.svg"
+              alt=""
+              width="129"
+              height="129"
+            />
+            <div class="hero__text">
+              <h1 class="hero__headline header-xl">
+                Namaste / Hello! <span>I'm Girish</span>.
+              </h1>
+              <p class="hero__description">
+                I'm a front-end developer from India with a passion for building accessible and user-friendly web applications. I’m driven by curiosity and ask the right questions to get to the heart of any problem. I thrive in positive environments and continuously seek new knowledge to improve and adapt.</p>
+              <a href="#contact" class="hero__contact underline">Contact me</a>
+              <br>
+              <br>
+              <a href="/Girish Sukinkar ATS_Friendly_Resume.pdf" download="download" class="hero__contact underline">See Resume</a>
+            </div>
+          </div>
+        </div>
+      </section>
 
-  <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/trueno" type="text/css" />
-</head>
+      <section class="skills">
+        <div class="wrapper skills__wrapper bottom-border">
+          <div class="skills__item">
+            <h3 class="skills__title">HTML</h3>
+            <p id="html" class="skills__description">5 Years Experience</p>
+          </div>
+          <div class="skills__item">
+            <h3 class="skills__title">CSS</h3>
+            <p id="css" class="skills__description">5 Years Experience</p>
+          </div>
+          <div class="skills__item">
+            <h3 class="skills__title">JavaScript</h3>
+            <p id="js" class="skills__description">5 Years Experience</p>
+          </div>
+          <div class="skills__item">
+            <h3 class="skills__title">Express Js</h3>
+            <p id="express" class="skills__description">4 Years Experience</p>
+          </div>
+          <div class="skills__item">
+            <h3 class="skills__title">React / Vue</h3>
+            <p id="react" class="skills__description">5 Years Experience</p>
+          </div>
+          <div class="skills__item">
+            <h3 class="skills__title">Sass</h3>
+            <p id="sass" class="skills__description">5 Years Experience</p>
+          </div>
+          <div class="skills__item">
+            <h3 class="skills__title">PHP</h3>
+            <p id="php" class="skills__description">5 Years Experience</p>
+          </div>
+          <div class="skills__item">
+            <h3 class="skills__title">MySql</h3>
+            <p id="mysql" class="skills__description">5 Years Experience</p>
+          </div>
+          <div class="skills__item">
+            <h3 class="skills__title">Redux</h3>
+            <p id="redux" class="skills__description">5 Years Experience</p>
+          </div>
+          <div class="skills__item">
+            <h3 class="skills__title">Vuex</h3>
+            <p id="vuex" class="skills__description">5 Years Experience</p>
+          </div>
+        </div>
+        <img
+          class="skills__rings"
+          src="/assets/images/pattern-rings.svg"
+          alt=""
+          width="530"
+          height="129"
+        />
+      </section>
 
-<body>
-  <div id="introduction">
-    <div class="box">
-      <h2>
-        Hello.<br />
-        <span> I'M GIRISH.</span>
-      </h2>
-      <h4>Full Stack Developer</h4>
-      <p>
-        I ask a lot of questions to solve a single problem. Always curious to know new things around me and adapt to
-        positive environment.
-      </p>
-      <div class="social-icons">
-        <ul>
-          <li>
-            <a href="https://github.com/girisukinkar"><i class="fab fa-github"></i></a>
-          </li>
-          <li>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-          </li>
-          <li>
-            <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
-          </li>
-        </ul>
-      </div>
-      <!-- <button>Know More!</button> -->
-    </div>
-  </div>
-  <div class="lines-bg"></div>
-  <div class="skills">
-    <div class="box">
-      <h2>Hire Me</h2>
-      <p>
-        Currently working at
-        <span><a href="https://www2.deloitte.com/us/en.html" target="_blank" style="color: #ff6633;">Deloitte</a></span>
-        as Consultant.<br />
-        Previously worked for The Alchemy Group, OneLoop Audio and Moneyfront
-      </p>
-      <a href="https://www.linkedin.com/in/girish-sukinkar/"> <button class="connect">Connect</button></a>
-      <a href="Girish Sukinkar Resume.pdf" download>
-        <button class="resume">Resume &nbsp;<i class="fas fa-download"></i></button></a>
-    </div>
-  </div>
-  <h2 class="project-heading">Projects So Far</h2>
-  <div class="projects">
-    <div class="card">
-      <img src="img/cgpi.png" alt="CPGI Calculator" />
-      <div class="card-details">
-        <h2>CGPA to Percentage</h2>
-        <p>Mumbai University CGPA to Percentage Calculator</p>
+      <section class="experience wrapper bottom-border">
+        <div class="experience__wrapper exp ">
+          <h2 class="headline header-xl">Previously Worked At</h2>
+          <div class="exp__companies">
+            <a href="https://www.linkedin.com/company/deloitte/" class="name current-company">Deloitte USI</a>
+            <a href="https://www.thealchemygroup.co/" class="name">Alchemy Group</a>
+            <a href="https://www.linkedin.com/company/oneloop-audio/?originalSubdomain=in" class="name">OneLoop Audio</a>
+            <a href="https://moneyfront.in/" class="name">Moneyfront</a>
+          </div>
+        </div>
+      </section>
+      <section class="projects">
+        <div class="wrapper projects__wrapper">
+          <div class="projects__grid">
+            <h2 class="projects__headline header-xl">Projects</h2>
+            <a href="#contact" class="projects__contact underline"
+              >Contact me</a
+            >
 
-        <a href="projects/cgpi calc/index.html"><button>&rarr;</button></a>
-      </div>
-    </div>
-    <div class="card">
-      <img src="img/mutualfund.png" alt="Mutual fund app" />
-      <div class="card-details">
-        <h2>Nav History App</h2>
-        <p>Simple NAV of every mutual fund since inception date</p>
-        <a href="projects/mutual-fund/index.html"><button>&rarr;</button></a>
-      </div>
-    </div>
-    <div class="card">
-      <img src="img/cottage.png" alt="Shraddha Cottage" />
-      <div class="card-details">
-        <h2>Shraddha Cottage</h2>
-        <p>Static website made for a friend</p>
-        <a href="projects/siddhesh/index.html"><button>&rarr;</button></a>
-      </div>
-    </div>
-    <div class="card">
-      <img src="img/nik.png" alt="Nikhil Portfolio" />
-      <div class="card-details">
-        <h2>Bio static website</h2>
-        <p>Made a demo website to teach him how to build websites.</p>
-        <a href="projects/Nik Portfolio/index.html"><button>&rarr;</button></a>
-      </div>
-    </div>
-    <div class="card">
-      <img src="img/Jump Music.gif" alt="Nikhil Portfolio" />
-      <div class="card-details">
-        <h2>Jump Music</h2>
-        <p>Click on boxes to see the animation. It plays short sound along with color animation. <br />Coded in HTML,
-          CSS , JS</p>
-        <a href="projects/music/index.html"><button>&rarr;</button></a>
-      </div>
-    </div>
-  </div>
-  <!-- The Modal -->
-  <div id="myModal" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <p>I am kinda anti-social but still if you want to befriend me or stalk me <a
-          href="https://www.facebook.com/girish4ever">click here</a></p>
-    </div>
-  </div>
-  <script src="js/main.js"></script>
-</body>
+            <div class="projects__item">
+              <picture class="projects__picture">
+                <source
+                  media="(min-width: 62.5em)"
+                  srcset="/img/c.png"
+                />
+                <img
+                  class="projects__image"
+                  src="/img/c.png"
+                  alt="screenshot of design portfolio website"
+                  width-="343"
+                  height="253"
+                />
+              </picture>
+              <h3 class="projects__name">Staycation Cottages</h3>
+              <p class="projects__tags">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+              </p>
+              <div class="projects__links">
+                <a href="" class="underline">View Project</a>
+                <a href="" class="underline">View Code</a>
+              </div>
+            </div>
 
+  
+            <div class="projects__item">
+              <picture class="projects__picture">
+                <source
+                  media="(min-width: 62.5em)"
+                  srcset="/img/jump-music.gif"
+                />
+                <img
+                  class="projects__image"
+                  src="/img/jump-music.gif"
+                  alt="jump music art"
+                  width-="343"
+                  height="253"
+                />
+              </picture>
+              <h3 class="projects__name">Jump Music Art</h3>
+              <p class="projects__tags">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+              </p>
+              <div class="projects__links">
+                <a href="/projects/music/index.html" class="underline">View Project</a>
+                <a href="https://github.com/girisukinkar/girisukinkar.github.io/tree/master/projects/music" class="underline">View Code</a>
+              </div>
+            </div>
+  
+            <div class="projects__item">
+              <picture class="projects__picture">
+                <source
+                  media="(min-width: 62.5em)"
+                  srcset="/img/funds.png"
+                />
+                <img
+                  class="projects__image"
+                  src="/img/funds.png"
+                  alt="Mutual Funds Image"
+                  width-="343"
+                  height="253"
+                />
+              </picture>
+              <h3 class="projects__name">Mutual Funds NAV</h3>
+              <p class="projects__tags">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>Express</span>
+              </p>
+              <div class="projects__links">
+                <a href="/projects/mutual-fund/index.html" class="underline">View Project</a>
+                <a href="https://github.com/girisukinkar/girisukinkar.github.io/tree/master/projects/mutual-fund" class="underline">View Code</a>
+              </div>
+            </div>
+            <div class="projects__item">
+              <picture class="projects__picture">
+                <source
+                  media="(min-width: 62.5em)"
+                  srcset="/img/cgpi-1.png"
+                />
+                <img
+                  class="projects__image"
+                  src="/img/cgpi-1.png"
+                  alt="Cgpi image"
+                  width-="343"
+                  height="253"
+                />
+              </picture>
+              <h3 class="projects__name">CGPA To Percentage Calculator</h3>
+              <p class="projects__tags">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+              </p>
+              <div class="projects__links">
+                <a href="/projects/cgpi calc/index.html" class="underline">View Project</a>
+                <a href="https://github.com/girisukinkar/girisukinkar.github.io/tree/master/projects/cgpi%20calc" class="underline">View Code</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact bg-less-dark">
+        <div class="wrapper contact__wrapper bottom-border">
+          <div class="contact__text">
+            <h2 class="contact__headline header-xl">Contact</h2>
+            <p class="contact__description">
+              I would love to hear about your project and how I could help.
+              Please fill in the form, and I'll get back to you as soon as
+              possible.
+            </p>
+          </div>
+          <form action="" class="contact__form">
+            <div class="contact__control">
+              <label for="name" class="visually-hidden">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Name"
+                required
+              />
+              <img
+                src="/assets/images/icon-invalid.svg"
+                alt=""
+                class="contact__invalid-icon"
+                width="24"
+                height="24"
+              />
+            </div>
+            <div class="contact__control">
+              <label for="email" class="visually-hidden">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email"
+                required
+              />
+              <img
+                src="/assets/images/icon-invalid.svg"
+                alt=""
+                class="contact__invalid-icon"
+                width="24"
+                height="24"
+              />
+            </div>
+            <div class="contact__control">
+              <label for="message" class="visually-hidden">Message</label>
+              <textarea
+                name="message"
+                id="message"
+                cols="30"
+                rows="3"
+                placeholder="Message"
+                required
+              ></textarea>
+              <img
+                src="/assets/images/icon-invalid.svg"
+                alt=""
+                class="contact__invalid-icon"
+                width="24"
+                height="24"
+              />
+            </div>
+            <div class="contact__control align-right">
+              <button type="submit">Send Message</button>
+            </div>
+          </form>
+        </div>
+        <img
+          class="contact__rings"
+          src="/assets/images/pattern-rings.svg"
+          alt=""
+          width="530"
+          height="129"
+        />
+      </section>
+    </main>
+
+    <footer class="footer bg-less-dark">
+      <h2 class="visually-hidden">Footer</h2>
+      <div class="wrapper">
+        <nav class="header__nav">
+          <h2 class="visually-hidden">Navigation</h2>
+          <a href="/" class="header__home">
+            Girish
+            <span class="visually-hidden">(to home page)</span>
+          </a>
+          <a href="" class="header__social">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="24"
+              aria-labelledby="socialGitHub"
+              role="img"
+            >
+              <title id="socialGitHub">GitHub</title>
+              <path
+                fill="#FFF"
+                fill-rule="evenodd"
+                d="M12.304 0C5.506 0 0 5.506 0 12.304c0 5.444 3.522 10.042 8.413 11.672.615.108.845-.261.845-.584 0-.292-.015-1.261-.015-2.291-3.091.569-3.891-.754-4.137-1.446-.138-.354-.738-1.446-1.261-1.738-.43-.23-1.046-.8-.016-.815.97-.015 1.661.892 1.892 1.261 1.107 1.86 2.876 1.338 3.584 1.015.107-.8.43-1.338.784-1.646-2.738-.307-5.598-1.368-5.598-6.074 0-1.338.477-2.446 1.26-3.307-.122-.308-.553-1.569.124-3.26 0 0 1.03-.323 3.383 1.26.985-.276 2.03-.415 3.076-.415 1.046 0 2.092.139 3.076.416 2.353-1.6 3.384-1.261 3.384-1.261.676 1.691.246 2.952.123 3.26.784.861 1.26 1.953 1.26 3.307 0 4.721-2.875 5.767-5.613 6.074.446.385.83 1.123.83 2.277 0 1.645-.015 2.968-.015 3.383 0 .323.231.708.846.584a12.324 12.324 0 0 0 8.382-11.672C24.607 5.506 19.101 0 12.304 0Z"
+              />
+            </svg>
+          </a>
+          <a href="" class="header__social">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="24"
+              aria-labelledby="socialLinkedIn"
+              role="img"
+            >
+              <title id="socialLinkedIn">LinkedIn</title>
+              <path
+                fill="#FFF"
+                fill-rule="evenodd"
+                d="M5.551 3.304c-1.14 0-2.067.926-2.067 2.064 0 1.14.928 2.066 2.067 2.066a2.066 2.066 0 0 0 0-4.13ZM3.767 8.998v11.453h3.562L7.33 8.998H3.767Zm5.798 0V20.45l3.554.002.002-5.668c0-1.454.253-2.941 2.132-2.941 1.851 0 1.851 1.755 1.851 3.036v5.571l3.559-.001v-6.28c0-2.834-.517-5.457-4.27-5.457-1.763 0-2.916.997-3.368 1.85h-.05V8.997h-3.41ZM22.435 24H1.982c-.976 0-1.77-.777-1.77-1.732V1.731C.212.776 1.006 0 1.982 0h20.453c.98 0 1.777.776 1.777 1.73v20.538c0 .955-.797 1.732-1.777 1.732Z"
+              />
+            </svg>
+          </a>
+        </nav>
+      </div>
+    </footer>
+    <script>
+      function getYearsSince(dateStr) {
+        const startDate = new Date(dateStr);
+        const currentDate = new Date();
+        const years = currentDate.getFullYear() - startDate.getFullYear();
+        const months = currentDate.getMonth() - startDate.getMonth();
+        return months >= 0 ? years : years - 1;
+      }
+
+console.log(getYearsSince('July 2018') + ' years');
+
+      function insertExperience(id, exp) {
+        document.getElementById(id).innerHTML  = `${exp} Years Experience`
+      }
+
+
+
+      insertExperience('html', getYearsSince('July 2018'))
+      insertExperience('css', getYearsSince('July 2018'))
+      insertExperience('sass', getYearsSince('July 2018'))
+      insertExperience('react', getYearsSince('May 2019'))
+      insertExperience('php', getYearsSince('July 2018'))
+      insertExperience('express', getYearsSince('May 2019'))
+      insertExperience('redux', getYearsSince('May 2019'))
+      insertExperience('vuex', getYearsSince('May 2019'))
+    </script>
+  </body>
 </html>
