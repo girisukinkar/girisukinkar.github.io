@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calculate 3D printing filament cost per gram and for different print weights.">
+  <title>3D Printing Filament Price Calculator</title>
+  <!-- Modern Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-body: hsl(210, 30%, 97%);
+      --bg-card: hsl(0, 0%, 100%);
+      --bg-input: hsl(210, 20%, 95%);
+      --accent: hsl(220, 90%, 56%); /* Royal Blue */
+      --accent-glow: hsla(220, 90%, 56%, 0.12);
+      --text-primary: hsl(220, 20%, 15%);
+      --text-secondary: hsl(220, 10%, 45%);
+      --border-color: hsl(210, 14%, 87%);
+      --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+      line-height: 1.5;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      margin: auto;
+      transition: max-width var(--transition);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      transition: var(--transition);
+      gap: 0.5rem;
+    }
+
+    .back-link:hover {
+      transform: translateX(-3px);
+      filter: brightness(1.2);
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+    }
+
+    /* Desktop-friendly grid layout */
+    .grid-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+
+    .grid-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 850px) {
+      .container {
+        max-width: 1100px;
+      }
+      .grid-layout {
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 2rem;
+        align-items: start;
+      }
+    }
+
+    .card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      border-color: hsla(220, 90%, 56%, 0.25);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group:last-child {
+      margin-bottom: 0;
+    }
+
+    label {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-prefix {
+      position: absolute;
+      left: 1rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .input-suffix {
+      position: absolute;
+      right: 1rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    input, select {
+      width: 100%;
+      background-color: var(--bg-input);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 1.1rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    input[data-prefix] {
+      padding-left: 2.2rem;
+    }
+
+    input[data-suffix] {
+      padding-right: 4rem;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      background-color: var(--bg-card);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-glow);
+    }
+
+    /* Calculator Toggle / Select Options */
+    .weight-options {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .weight-btn {
+      background-color: var(--bg-input);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      padding: 0.65rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 700;
+      transition: var(--transition);
+    }
+
+    .weight-btn.active {
+      background-color: var(--accent-glow);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .weight-btn:hover:not(.active) {
+      border-color: var(--text-secondary);
+    }
+
+    /* Table Styling */
+    .table-container {
+      overflow-x: auto;
+      margin-top: 1rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th, td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    th {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-secondary);
+    }
+
+    td {
+      font-size: 1.05rem;
+      font-weight: 500;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background-color: hsla(220, 20%, 95%, 0.5);
+    }
+
+    .highlight-cell {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* Custom print estimator */
+    .estimator-box {
+      background-color: hsla(220, 90%, 56%, 0.04);
+      border: 1px dashed hsla(220, 90%, 56%, 0.3);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .estimator-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .estimator-result {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-top: 0.75rem;
+    }
+
+    /* History Styling */
+    .save-btn:hover {
+      background-color: var(--accent-glow) !important;
+    }
+
+    .history-item {
+      background-color: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .history-item:hover {
+      border-color: var(--accent);
+      background-color: var(--bg-card);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .history-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .history-title {
+      font-weight: 700;
+      color: var(--text-primary);
+      font-size: 1rem;
+    }
+
+    .history-meta {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .history-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .history-delete-btn {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      padding: 0.25rem;
+      border-radius: 4px;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .history-delete-btn:hover {
+      color: hsl(7, 100%, 55%);
+      background-color: rgba(255, 0, 0, 0.05);
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <a href="../../index.html" class="back-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      Back to Portfolio
+    </a>
+
+    <header>
+      <h1>Filament Price Calculator</h1>
+      <p class="subtitle">Quickly estimate 3D printing filament material costs</p>
+    </header>
+
+    <div class="grid-layout">
+      <!-- Left Column (Inputs and Config) -->
+      <div class="grid-col">
+        <div class="card">
+          <!-- Filament Spool Weight Selection -->
+          <div class="form-group">
+            <label>Spool Weight</label>
+            <div class="weight-options">
+              <button type="button" class="weight-btn active" id="btn-1000" onclick="selectWeight(1000)">1 kg</button>
+              <button type="button" class="weight-btn" onclick="selectWeight('custom')">Custom</button>
+            </div>
+            
+            <div class="input-wrapper" id="custom-weight-container" style="display: none;">
+              <input type="number" id="spool-weight" value="1000" min="1" placeholder="Enter custom weight" data-suffix>
+              <span class="input-suffix">grams</span>
+            </div>
+          </div>
+
+          <!-- Filament Spool Price -->
+          <div class="form-group">
+            <label for="spool-price">Spool Price</label>
+            <div class="input-wrapper">
+              <span class="input-prefix">₹</span>
+              <input type="number" id="spool-price" value="999" placeholder="Enter manual price (e.g. 1500)" min="0" step="any" data-prefix>
+            </div>
+          </div>
+
+          <!-- Quick Custom Estimate Box -->
+          <div class="estimator-box">
+            <div class="estimator-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+              Custom Print Cost Estimator
+            </div>
+            <div style="display: flex; gap: 1rem; align-items: flex-end;">
+              <div style="flex: 1;">
+                <label for="print-weight" style="font-size: 0.85rem; margin-bottom: 0.25rem;">Required Model Weight</label>
+                <div class="input-wrapper">
+                  <input type="number" id="print-weight" value="25" min="0.1" step="any" style="padding: 0.5rem 2.2rem 0.5rem 0.8rem; font-size: 1rem;" data-suffix>
+                  <span class="input-suffix" style="font-size: 0.9rem; right: 0.8rem;">g</span>
+                </div>
+              </div>
+              <div style="flex: 1; padding-bottom: 0.4rem;">
+                <div class="estimator-result">
+                  Cost: <span id="custom-estimate-val" class="highlight-cell">₹0.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Save to History Section -->
+          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color); display: flex; gap: 0.75rem; align-items: flex-end;">
+            <div style="flex: 1;">
+              <label for="history-label" style="font-size: 0.85rem; margin-bottom: 0.25rem;">Label / Filament Type</label>
+              <input type="text" id="history-label" placeholder="e.g. Red PLA, PETG Grey" style="padding: 0.5rem 0.8rem; font-size: 1rem;">
+            </div>
+            <button type="button" class="save-btn" id="save-history-btn" onclick="saveToHistory()" style="padding: 0.5rem 1.2rem; font-size: 1rem; cursor: pointer; border-radius: 8px; border: 1px solid var(--accent); background-color: transparent; color: var(--accent); font-weight: 700; transition: var(--transition); height: 40px; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                <polyline points="7 3 7 8 15 8"></polyline>
+              </svg>
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column (Outputs and History) -->
+      <div class="grid-col">
+        <!-- Pricing Tables -->
+        <div class="card" style="padding-top: 1.5rem;">
+          <h2 style="font-size: 1.25rem; font-weight: 700; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 0.5rem;">Cost Distribution Table</h2>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Weight</th>
+                  <th>Cost (INR)</th>
+                </tr>
+              </thead>
+              <tbody id="pricing-table-body">
+                <!-- Dynamic rows will be rendered here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- History Card -->
+        <div class="card" id="history-card" style="display: none; padding-top: 1.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1rem;">
+            <h2 style="font-size: 1.25rem; font-weight: 700; margin: 0;">Saved Calculations</h2>
+            <button type="button" id="clear-history-btn" onclick="clearHistory()" style="background: none; border: none; color: var(--text-secondary); cursor: pointer; font-size: 0.85rem; transition: var(--transition); text-decoration: underline;">Clear All</button>
+          </div>
+          <div id="history-list" style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <!-- History items will be rendered here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Made with ❤️ | <a href="../../index.html">Girish Sukinkar Portfolio</a></p>
+    </div>
+  </div>
+
+  <script>
+    let activeWeightMode = '1000'; // Default 1kg (1000g)
+    let history = [];
+
+    // Load history from localStorage on load
+    window.addEventListener('DOMContentLoaded', () => {
+      loadHistory();
+    });
+
+    function selectWeight(mode, manualValue) {
+      const buttons = document.querySelectorAll('.weight-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      
+      const customWeightContainer = document.getElementById('custom-weight-container');
+      const spoolWeightInput = document.getElementById('spool-weight');
+
+      if (mode === 'custom') {
+        buttons[1].classList.add('active');
+        customWeightContainer.style.display = 'block';
+        if (manualValue !== undefined) {
+          spoolWeightInput.value = manualValue;
+        }
+        activeWeightMode = 'custom';
+      } else {
+        customWeightContainer.style.display = 'none';
+        spoolWeightInput.value = mode;
+        activeWeightMode = mode.toString();
+        
+        // Add active class to corresponding button
+        if (mode === 1000) {
+          buttons[0].classList.add('active');
+        }
+      }
+      calculatePrices();
+    }
+
+    function calculatePrices() {
+      const weightInput = document.getElementById('spool-weight');
+      const priceInput = document.getElementById('spool-price');
+      const tableBody = document.getElementById('pricing-table-body');
+      const customPrintWeightInput = document.getElementById('print-weight');
+      const customEstimateVal = document.getElementById('custom-estimate-val');
+
+      const spoolWeight = parseFloat(weightInput.value) || 1000;
+      const spoolPrice = parseFloat(priceInput.value) || 0;
+
+      // Calculate cost per single gram
+      const costPerGram = spoolWeight > 0 ? (spoolPrice / spoolWeight) : 0;
+
+      // Define target weights as requested:
+      // "how much 1g cost in rupees then 5g cost and 100g cost and 100 and then 200 till 500g"
+      // Weights: 1g, 5g, 100g, 200g, 300g, 400g, 500g
+      const targetWeights = [1, 5, 100, 200, 300, 400, 500];
+      
+      // Render table rows
+      tableBody.innerHTML = '';
+      targetWeights.forEach(w => {
+        const cost = w * costPerGram;
+        // Format cost: If cost is greater than 0, show decimals, otherwise 0.00
+        const formattedCost = cost === 0 ? "₹0.00" : `₹${cost.toFixed(2)}`;
+        
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${w} g</td>
+          <td class="${w === 1 ? 'highlight-cell' : ''}">${formattedCost}</td>
+        `;
+        tableBody.appendChild(row);
+      });
+
+      // Calculate custom print estimator
+      const customPrintWeight = parseFloat(customPrintWeightInput.value) || 0;
+      const customCost = customPrintWeight * costPerGram;
+      customEstimateVal.innerText = customCost === 0 ? "₹0.00" : `₹${customCost.toFixed(2)}`;
+    }
+
+    // LocalStorage History Logic
+    function loadHistory() {
+      const storedHistory = localStorage.getItem('filament_calc_history');
+      if (storedHistory) {
+        try {
+          history = JSON.parse(storedHistory);
+        } catch (e) {
+          history = [];
+        }
+      }
+      renderHistory();
+    }
+
+    function saveToHistory() {
+      const weightInput = document.getElementById('spool-weight');
+      const priceInput = document.getElementById('spool-price');
+      const customPrintWeightInput = document.getElementById('print-weight');
+      const labelInput = document.getElementById('history-label');
+
+      const spoolPrice = parseFloat(priceInput.value);
+      if (isNaN(spoolPrice) || spoolPrice <= 0) {
+        alert("Please enter a valid price before saving!");
+        return;
+      }
+
+      const spoolWeight = parseFloat(weightInput.value) || 1000;
+      const printWeight = parseFloat(customPrintWeightInput.value) || 0;
+      const label = labelInput.value.trim() || `Calculation (${spoolWeight}g @ ₹${spoolPrice})`;
+
+      const newItem = {
+        id: Date.now(),
+        label: label,
+        spoolPrice: spoolPrice,
+        spoolWeight: spoolWeight,
+        printWeight: printWeight
+      };
+
+      history.unshift(newItem); // Add to the top
+      
+      // Keep only top 10 items
+      if (history.length > 10) {
+        history.pop();
+      }
+
+      localStorage.setItem('filament_calc_history', JSON.stringify(history));
+      labelInput.value = ''; // clear input
+      renderHistory();
+    }
+
+    function renderHistory() {
+      const historyCard = document.getElementById('history-card');
+      const historyList = document.getElementById('history-list');
+
+      if (history.length === 0) {
+        historyCard.style.display = 'none';
+        return;
+      }
+
+      historyCard.style.display = 'block';
+      historyList.innerHTML = '';
+
+      history.forEach(item => {
+        const costPerGram = item.spoolPrice / item.spoolWeight;
+        const printCostStr = item.printWeight > 0 
+          ? ` (Print: ${item.printWeight}g = ₹${(item.printWeight * costPerGram).toFixed(2)})` 
+          : '';
+
+        const itemEl = document.createElement('div');
+        itemEl.className = 'history-item';
+        itemEl.onclick = () => loadHistoryItem(item.id);
+
+        itemEl.innerHTML = `
+          <div class="history-info">
+            <span class="history-title">${item.label}</span>
+            <span class="history-meta">₹${item.spoolPrice} / ${item.spoolWeight}g${printCostStr}</span>
+          </div>
+          <div class="history-actions">
+            <button class="history-delete-btn" onclick="deleteHistoryItem(event, ${item.id})">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+        `;
+        historyList.appendChild(itemEl);
+      });
+    }
+
+    function loadHistoryItem(id) {
+      const item = history.find(i => i.id === id);
+      if (!item) return;
+
+      // Restore spool weight state
+      if (item.spoolWeight === 1000) {
+        selectWeight(item.spoolWeight);
+      } else {
+        selectWeight('custom', item.spoolWeight);
+      }
+
+      // Restore price & model weight
+      document.getElementById('spool-price').value = item.spoolPrice;
+      document.getElementById('print-weight').value = item.printWeight;
+
+      calculatePrices();
+    }
+
+    function deleteHistoryItem(event, id) {
+      event.stopPropagation(); // Prevent loading the item when clicking delete
+      history = history.filter(item => item.id !== id);
+      localStorage.setItem('filament_calc_history', JSON.stringify(history));
+      renderHistory();
+    }
+
+    function clearHistory() {
+      if (confirm("Are you sure you want to clear all saved calculations?")) {
+        history = [];
+        localStorage.removeItem('filament_calc_history');
+        renderHistory();
+      }
+    }
+
+    // Attach listeners
+    document.getElementById('spool-price').addEventListener('input', calculatePrices);
+    document.getElementById('spool-weight').addEventListener('input', calculatePrices);
+    document.getElementById('print-weight').addEventListener('input', calculatePrices);
+
+    // Initial load
+    calculatePrices();
+  </script>
+</body>
+</html>
